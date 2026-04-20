@@ -7,6 +7,9 @@ const { Server } = require("socket.io");
 const path = require("path");
 
 const app = express();
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: "*" } });
 
