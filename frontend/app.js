@@ -1,4 +1,4 @@
-const API = "http://localhost:5000/api";
+const API_URL = "https://your-backend.onrender.com";
 const token = localStorage.getItem("token");
 if (!token) location.href = "index.html";
 const authHeaders = { Authorization: "Bearer " + token };
