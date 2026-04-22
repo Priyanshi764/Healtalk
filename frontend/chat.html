@@ -57,7 +57,7 @@
 </div>
 <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
 <script>
-const API='http://localhost:5000/api';
+const API='https://healtalk-4.onrender.com/api';
 const token=localStorage.getItem('token');
 let me=null; let currentChat=null; let socket=null; let typingTimer=null;
 if(!token) location.href='index.html';
@@ -72,7 +72,7 @@ const messageInput=document.getElementById('messageInput');
 async function init(){
   try{ const res=await fetch(API+'/users/me',{headers}); if(!res.ok) throw new Error(); me=await res.json(); localStorage.setItem('user',JSON.stringify(me)); }
   catch{logout();}
-  socket=io('http://localhost:5000');
+  socket=io('https://healtalk-4.onrender.com');
   socket.on('connect',()=>{statusText.textContent='Online'; if(me) socket.emit('user-online',me._id);});
   socket.on('receive-message',data=>{ if(data.senderId===currentChat?._id){appendMessage(data.message,false,data.senderName);} else {showToast('New message from '+data.senderName);} loadInbox(); });
   socket.on('typing',data=>{ if(currentChat && data.senderId===currentChat._id){typingIndicator.style.display='block';}});

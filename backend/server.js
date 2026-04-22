@@ -8,10 +8,19 @@ const path = require("path");
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server, { cors: { origin: "*" } });
+const io = new Server(server, { 
+  cors: { 
+    origin: ["http://localhost:3000", "http://localhost:5000", "https://healtalk-4.onrender.com"],
+    methods: ["GET", "POST"],
+    credentials: true
+  } 
+});
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:3000", "http://localhost:5000", "https://healtalk-4.onrender.com"],
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../frontend")));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
