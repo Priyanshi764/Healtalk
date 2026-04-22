@@ -165,11 +165,120 @@ body { font-family:'Segoe UI',sans-serif; background:#0d0d1a; color:#fff; displa
 }
 
 /* Responsive */
-@media(max-width:768px) {
-  .sidebar { width:60px; padding:16px 8px; }
+@media(max-width:1024px) {
+  .sidebar { width:70px; }
   .sidebar .nav-item span { display:none; }
-  .logo { font-size:16px; }
-  .main { margin-left:60px; padding:16px; }
+  .main { margin-left:70px; padding:16px; }
+  .users-grid { grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); }
+}
+
+@media(max-width:768px) {
+  .sidebar { width:60px; padding:12px 6px; position:fixed; height:100vh; z-index:100; }
+  .sidebar .nav-item { padding:10px 8px; font-size:12px; }
+  .logo { font-size:14px; margin-bottom:12px; }
+  .main { margin-left:60px; padding:12px; }
+  .topbar { flex-direction:column; gap:8px; }
+  .search-box { max-width:100%; }
+  .users-grid { grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px; }
+  .card { padding:14px; margin-bottom:12px; }
+  .card h3 { font-size:14px; margin-bottom:10px; }
+  .post-card { padding:12px 0; }
+  .post-header { gap:8px; }
+  .post-header img { width:36px; height:36px; }
+  .post-content { font-size:13px; }
+  .profile-cover { height:120px; margin-bottom:50px; }
+  .profile-avatar { width:70px; height:70px; bottom:-35px; }
+  .profile-info { padding:0 16px 16px; }
+  .profile-info h2 { font-size:18px; }
+  .profile-stats { gap:16px; }
+  .stat .num { font-size:18px; }
+  .stat .label { font-size:11px; }
+  .btn-sm { padding:6px 12px; font-size:11px; }
+  .avatar-btn { width:36px; height:36px; }
+}
+
+@media(max-width:600px) {
+  .sidebar { width:50px; padding:8px 4px; }
+  .sidebar .nav-item { padding:8px 6px; }
+  .logo { font-size:12px; }
+  .main { margin-left:50px; padding:8px; }
+  .topbar { gap:6px; }
+  .search-box { padding:8px 10px; font-size:12px; }
+  .search-box input { font-size:12px; }
+  .users-grid { grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:8px; }
+  .user-card { padding:12px; }
+  .user-card .uname { font-size:13px; }
+  .user-card .udisease { font-size:11px; }
+  .user-card img { width:50px; height:50px; }
+  .card { padding:12px; }
+  .card h3 { font-size:13px; }
+  .post-box textarea { font-size:13px; padding:10px; }
+  .post-actions { flex-wrap:wrap; gap:6px; }
+  .post-card { padding:10px 0; }
+  .post-header { gap:6px; }
+  .post-header img { width:32px; height:32px; }
+  .post-header .pname { font-size:13px; }
+  .post-header .pdisease { font-size:11px; }
+  .post-content { font-size:12px; }
+  .post-footer { gap:12px; font-size:12px; }
+  .profile-cover { height:100px; margin-bottom:45px; }
+  .profile-avatar { width:60px; height:60px; bottom:-30px; }
+  .profile-info h2 { font-size:16px; }
+  .profile-stats { gap:12px; }
+  .stat .num { font-size:16px; }
+  .btn-sm { padding:5px 10px; font-size:10px; }
+  .avatar-btn { width:32px; height:32px; }
+  .ai-box textarea { font-size:12px; padding:10px; }
+  .notif-item { padding:10px 0; gap:8px; }
+  .notif-item img { width:36px; height:36px; }
+  .notif-item .notif-text { font-size:12px; }
+  .lb-item { padding:10px 0; gap:10px; }
+  .lb-rank { font-size:18px; width:28px; }
+  .lb-item img { width:40px; height:40px; }
+  .lb-info .lbname { font-size:13px; }
+  .lb-rating { font-size:14px; }
+  .dark-toggle { width:40px; height:40px; font-size:18px; bottom:16px; right:16px; }
+}
+
+@media(max-width:480px) {
+  .sidebar { width:45px; }
+  .sidebar .nav-item { padding:6px 4px; }
+  .logo { font-size:11px; }
+  .main { margin-left:45px; padding:6px; }
+  .topbar { gap:4px; }
+  .search-box { padding:6px 8px; }
+  .search-box input { font-size:11px; }
+  .users-grid { grid-template-columns:repeat(auto-fill,minmax(100px,1fr)); gap:6px; }
+  .user-card { padding:10px; }
+  .user-card .uname { font-size:12px; }
+  .user-card img { width:45px; height:45px; }
+  .card { padding:10px; }
+  .card h3 { font-size:12px; margin-bottom:8px; }
+  .post-box textarea { font-size:12px; padding:8px; }
+  .post-actions { gap:4px; }
+  .post-card { padding:8px 0; }
+  .post-header { gap:4px; }
+  .post-header img { width:28px; height:28px; }
+  .post-header .pname { font-size:12px; }
+  .post-content { font-size:11px; }
+  .post-footer { gap:8px; font-size:11px; }
+  .profile-cover { height:80px; margin-bottom:40px; }
+  .profile-avatar { width:50px; height:50px; bottom:-25px; }
+  .profile-info h2 { font-size:14px; }
+  .profile-stats { gap:8px; }
+  .stat .num { font-size:14px; }
+  .stat .label { font-size:10px; }
+  .btn-sm { padding:4px 8px; font-size:9px; }
+  .avatar-btn { width:28px; height:28px; }
+  .ai-box textarea { font-size:11px; padding:8px; }
+  .notif-item { padding:8px 0; gap:6px; }
+  .notif-item img { width:32px; height:32px; }
+  .notif-item .notif-text { font-size:11px; }
+  .lb-item { padding:8px 0; gap:8px; }
+  .lb-rank { font-size:16px; }
+  .lb-item img { width:36px; height:36px; }
+  .lb-info .lbname { font-size:12px; }
+  .dark-toggle { width:36px; height:36px; font-size:16px; }
 }
 
 /* Spinner */

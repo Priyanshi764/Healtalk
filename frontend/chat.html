@@ -32,7 +32,96 @@
   .footer{display:flex;gap:10px;align-items:center;justify-content:space-between;}
   .meta{font-size:13px;color:#94a3b8;}
   .mobile-hide{display:none;}
-  @media(max-width:900px){.layout{grid-template-columns:1fr;} .sidebar{position:fixed;z-index:10;width:100%;max-height:360px;overflow:auto;border-right:none;border-bottom:1px solid rgba(255,255,255,.08);} .chat-panel{margin-top:380px;} }
+  
+  @media(max-width:1024px) {
+    .layout { grid-template-columns: 280px 1fr; }
+    .sidebar { padding: 16px 12px; }
+    .sidebar h2 { font-size: 18px; }
+    .btn { padding: 10px 14px; font-size: 13px; }
+    .user-card { padding: 12px 14px; }
+    .user-card strong { font-size: 14px; }
+    .user-card small { font-size: 12px; }
+    .header h2 { font-size: 18px; }
+    .messages { padding: 16px; }
+    .message { max-width: 80%; padding: 10px 14px; font-size: 13px; }
+    .composer input { font-size: 13px; padding: 10px 12px; }
+  }
+
+  @media(max-width:768px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar {
+      position: fixed;
+      z-index: 10;
+      width: 100%;
+      max-height: 320px;
+      overflow-y: auto;
+      border-right: none;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      padding: 12px;
+    }
+    .chat-panel { margin-top: 340px; }
+    .sidebar h2 { font-size: 16px; }
+    .header { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .header h2 { font-size: 16px; }
+    .meta { font-size: 12px; }
+    .messages { padding: 12px; }
+    .message { max-width: 85%; padding: 9px 12px; font-size: 12px; }
+    .message small { font-size: 11px; }
+    .composer { gap: 8px; padding-top: 8px; }
+    .composer input { font-size: 12px; padding: 9px 10px; }
+    .btn { padding: 9px 12px; font-size: 12px; }
+    .user-card { padding: 10px 12px; }
+    .user-card strong { font-size: 13px; margin-bottom: 4px; }
+    .user-card small { font-size: 11px; }
+    .search-box { padding: 10px 12px; font-size: 12px; }
+  }
+
+  @media(max-width:600px) {
+    .sidebar {
+      max-height: 280px;
+      padding: 10px;
+    }
+    .chat-panel { margin-top: 300px; }
+    .sidebar h2 { font-size: 14px; margin-bottom: 8px; }
+    .btn { padding: 8px 10px; font-size: 11px; }
+    .user-card { padding: 8px 10px; }
+    .user-card strong { font-size: 12px; }
+    .user-card small { font-size: 10px; }
+    .header { gap: 6px; }
+    .header h2 { font-size: 14px; }
+    .messages { padding: 10px; }
+    .message { max-width: 90%; padding: 8px 10px; font-size: 11px; margin-bottom: 8px; }
+    .message small { font-size: 10px; margin-top: 4px; }
+    .typing { font-size: 11px; }
+    .composer { gap: 6px; padding-top: 6px; }
+    .composer input { font-size: 11px; padding: 8px 8px; }
+    .search-box { padding: 8px 10px; font-size: 11px; }
+    .meta { font-size: 11px; }
+  }
+
+  @media(max-width:480px) {
+    .sidebar {
+      max-height: 240px;
+      padding: 8px;
+    }
+    .chat-panel { margin-top: 260px; }
+    .sidebar h2 { font-size: 13px; margin-bottom: 6px; }
+    .btn { padding: 7px 8px; font-size: 10px; }
+    .user-card { padding: 7px 8px; }
+    .user-card strong { font-size: 11px; margin-bottom: 3px; }
+    .user-card small { font-size: 9px; }
+    .header { gap: 4px; }
+    .header h2 { font-size: 13px; }
+    .header small { font-size: 11px; }
+    .messages { padding: 8px; }
+    .message { max-width: 95%; padding: 7px 8px; font-size: 10px; margin-bottom: 6px; }
+    .message small { font-size: 9px; margin-top: 3px; }
+    .typing { font-size: 10px; }
+    .composer { gap: 4px; padding-top: 4px; }
+    .composer input { font-size: 10px; padding: 7px 6px; }
+    .search-box { padding: 7px 8px; font-size: 10px; }
+    .meta { font-size: 10px; }
+  }
 </style>
 </head>
 <body>
