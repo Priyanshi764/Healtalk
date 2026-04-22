@@ -7,9 +7,6 @@ const { Server } = require("socket.io");
 const path = require("path");
 
 const app = express();
-app.get("/", (req, res) => {
-  res.send("Backend is running 🚀");
-});
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: "*" } });
 
@@ -29,7 +26,18 @@ app.use("/api/posts", require("./Routes/post"));
 app.use("/api/groups", require("./Routes/group"));
 app.use("/api/notifications", require("./Routes/notification"));
 
-app.get("/", (req, res) => res.send("HealTalk API Running 🚀"));
+app.get("/", (_req, res) => res.send("HealTalk API Running 🚀"));
+
+// 404 Handler
+app.use((_req, res) => {
+  res.status(404).json({ error: "Route not found" });
+});
+
+// Error handling middleware
+app.use((err, _req, res, _next) => {
+  console.error("Error:", err.message);
+  res.status(err.status || 500).json({ error: err.message || "Internal Server Error" });
+});
 
 // MongoDB
 mongoose.connect(process.env.MONGO_URI)
@@ -76,7 +84,8 @@ io.on("connection", (socket) => {
   });
 
   socket.on("answer-call", (data) => {
-    io.to(onlineUsers[data.to]).emit("call-accepted", data.signal);
+    const receiverSocket = onlineUsers[data.to];
+    if (receiverSocket) io.to(receiverSocket).emit("call-accepted", data.signal);
   });
 
   socket.on("disconnect", () => {
@@ -92,3 +101,15 @@ io.on("connection", (socket) => {
 
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
+// Graceful shutdown
+process.on("SIGTERM", () => {
+  console.log("SIGTERM received, shutting down gracefully...");
+  server.close(() => {
+    console.log("Server closed");
+    mongoose.connection.close(false, () => {
+      console.log("MongoDB connection closed");
+      process.exit(0);
+    });
+  });
+});
